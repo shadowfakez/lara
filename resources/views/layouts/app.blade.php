@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Главная</title>
+        <title>@yield('title')</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -33,9 +33,9 @@
 
                         <!-- Settings Dropdown -->
                         @if(Auth::guest())
-                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                                <a class="text-sm text-gray-700 underline" href="{{ route('login') }}">Login</a>
-                                <a class="text-sm text-gray-700 underline" href="{{ route('register') }}">Register</a>
+                            <div class="hidden sm:flex sm:items-center sm:ml-6">
+                                <a class="text-sm text-gray-800 px-3" href="{{ route('login') }}">Login</a>
+                                <a class="text-sm text-gray-800 px-3" href="{{ route('register') }}">Register</a>
                             </div>
                         @else
 
@@ -127,28 +127,26 @@
                 </div>
             </nav>
 
-
             <!-- Page Content -->
             <main class="flex-grow">
                 @yield('breadcrumbs')
 
+                @include('layouts.partials.flash')
+
                 @yield('content')
             </main>
 
-                <footer class="footer bg-blue-200 relative pt-1 border-b-2 border-blue-700">
-                    <div class="container mx-auto px-6">
-                        <div class="border-t-2 border-blue-700 flex flex-col items-center">
-                            <div class="sm:w-2/3 text-center py-6">
-                                <p class="text-sm text-blue-700 font-bold mb-2">
-                                    © 2021 by shadowfake
-                                </p>
-                            </div>
+            <footer class="footer bg-blue-200 relative pt-1 border-b-2 border-blue-700">
+                <div class="container mx-auto px-6">
+                    <div class="border-t-2 border-blue-700 flex flex-col items-center">
+                        <div class="sm:w-2/3 text-center py-6">
+                            <p class="text-sm text-blue-700 font-bold mb-2">
+                                © 2021 by shadowfake
+                            </p>
                         </div>
                     </div>
-                </footer>
-
-
-
+                </div>
+            </footer>
         </div>
     </body>
 </html>
