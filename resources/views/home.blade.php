@@ -5,7 +5,8 @@
 @endsection
 
 @section('breadcrumbs')
-    <nav class="bg-grey-light rounded font-sans w-full">
+    {{ Breadcrumbs::render('home') }}
+  {{--  <nav class="bg-grey-light rounded font-sans w-full">
         <div class="py-1.5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -17,7 +18,7 @@
                 </div>
             </div>
         </div>
-    </nav>
+    </nav>--}}
 @endsection
 
 
