@@ -13,7 +13,7 @@
                         <ol class="list-reset flex text-grey-dark">
                             <li><a href="{{ route('home') }}" class="text-blue font-bold">Home</a></li>
                             <li><span class="mx-2">/</span></li>
-                            <li>Login</li>
+                            <li>Sign Up</li>
                         </ol>
                     </div>
                 </div>
