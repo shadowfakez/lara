@@ -19,19 +19,37 @@
 @endif
 
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
+    <div role="alert" class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-green-500 text-white font-bold rounded-t px-4 py-2">
+            Success
+        </div>
+        <div class="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-2
+        text-green-700">
+            {{ session('success') }}
+        </div>
     </div>
 @endif
 
 @if (session('error'))
-    <div class="alert alert-danger">
+    <div role="alert" class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+            Error
+        </div>
+        <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-2
+        text-red-700">
         {{ session('error') }}
+        </div>
     </div>
 @endif
 
 @if (session('info'))
-    <div class="alert alert-info">
+    <div role="alert" class="max-w-4xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-blue-500 text-white font-bold rounded-t px-4 py-2">
+            Info
+        </div>
+        <div class="border border-t-0 border-blue-400 rounded-b bg-blue-100 px-4 py-2
+        text-blue-700">
         {{ session('info') }}
+        </div>
     </div>
 @endif
