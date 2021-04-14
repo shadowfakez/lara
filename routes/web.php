@@ -18,3 +18,22 @@ Route::get('/', function () {
 })->name('home');
 
 require __DIR__.'/auth.php';
+
+Route::get('/cabinet', 'App\Http\Controllers\Cabinet\HomeController@index')->name('cabinet');
+
+Route::prefix('admin')->group(function() {
+
+    Route::middleware('auth')->group(function () {
+
+        Route::namespace('App\Http\Controllers\Admin')->group(function () {
+
+            Route::get('/', 'HomeController@index')->name('admin.home');
+
+            Route::resource('users', 'UserController');
+
+        });
+    });
+});
+
+
+

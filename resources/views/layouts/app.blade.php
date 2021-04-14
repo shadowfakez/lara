@@ -18,113 +18,77 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 flex flex-col">
-            <nav x-data="{ open: false }" class="bg-blue-200 border-b border-gray-100">
+            <nav class="bg-blue-200 border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Navigation Links -->
-                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                                    {{ __('Home') }}
-                                </x-nav-link>
+                            <div class="p-3">
+                                <div class="group inline-block relative">
+                                    <div class="py-3 space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                        <a class="text-sm text-gray-700 px-3" href="{{ route('home') }}">Home</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Settings Dropdown -->
                         @if(Auth::guest())
-                            <div class="hidden sm:flex sm:items-center sm:ml-6">
-                                <a class="text-sm text-gray-800 px-3" href="{{ route('login') }}">Login</a>
-                                <a class="text-sm text-gray-800 px-3" href="{{ route('register') }}">Register</a>
+                            <div class="p-3">
+                                <div class="group inline-block relative">
+                                    <ul class="w-full">
+        <a class="text-sm text-gray-700 px-3" href="{{ route('login') }}">Login</a>
+        <a class="text-sm text-gray-700 px-3" href="{{ route('register') }}">Register</a>
+                                    </ul>
+                                </div>
                             </div>
-                        @else
-
-                        <div class="hidden sm:flex sm:items-center sm:ml-6">
-                            <x-dropdown align="right" width="48">
-                                <x-slot name="trigger">
-                                    <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                        <div>{{ Auth::user()->name }}</div>
-
-                                        <div class="ml-1">
-                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </x-slot>
-
-                                <x-slot name="content">
-                                    <!-- Authentication -->
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-
-                                        <x-dropdown-link :href="route('logout')"
-                                                         onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                            {{ __('Log out') }}
-                                        </x-dropdown-link>
-                                    </form>
-                                </x-slot>
-                            </x-dropdown>
-                        </div>
-                        @endif
-
-
-                        <!-- Hamburger -->
-                        <div class="-mr-2 flex items-center sm:hidden">
-                            <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
-                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                                    <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                                    <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Responsive Navigation Menu -->
-                <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-                    <div class="pt-2 pb-3 space-y-1">
-                        <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                            {{ __('Home') }}
-                        </x-responsive-nav-link>
+@else
+                            <div class="p-3">
+                                <div class="group inline-block relative">
+                                    <ul class="w-full">
+                                        <li class="dropdown inline text-gray-700 hover:text-gray-700
+                        cursor-pointer tracking-wide">
+                                            <button class="py-3 px-4 rounded flex items-center text-sm font-medium
+                    text-gray-500 hover:text-gray-700 hover:border-gray-300 outline-none focus:outline-none
+                    focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                                <span class="pr-1 font-semibold flex-1">{{ Auth::user()->name }}</span>
+                                                <span>
+                                                    <svg
+                                                            class="fill-current h-4 w-4 transform group-hover:-rotate-180
+                                                    transition duration-150 ease-in-out"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 20 20">
+                                                    <path
+                                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                                    />
+                                                    </svg>
+                                                </span>
+                                            </button>
+                                            <ul class="bg-white border rounded-sm transform scale-0
+                                            group-hover:scale-100 absolute transition duration-150 ease-in-out
+                                            origin-top min-w-32">
+                                                <li class="text-sm rounded-sm px-3 py-1 hover:bg-gray-100">
+                                                    <a href="{{ route('admin.home') }}">Admin</a>
+                                                </li>
+                                                <li class="text-sm rounded-sm px-3 py-1 hover:bg-gray-100">
+                                                    <a href="{{ route('cabinet') }}">Cabinet</a>
+                                                </li>
+                                                <li class="text-sm rounded-sm px-3 py-1 hover:bg-gray-100">
+                                                    <form  method="POST" action="{{ route('logout') }}">
+                                                        @csrf
+                                                        <button class="outline-none focus:outline-none
+                    focus:text-gray-700 focus:border-gray-300" type="submit">Logout</button>
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                    </ul>
+                                </div>
+                            </div>
                     </div>
 
-                    <!-- Responsive Settings Options -->
+        @endif
 
-                    @if(Auth::guest())
-                        <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                        <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                    @else
-                    <div class="pt-4 pb-1 border-t border-gray-200">
-                        <div class="flex items-center px-4">
-                            <div class="flex-shrink-0">
-                                <svg class="h-10 w-10 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                </svg>
-                            </div>
-
-                            <div class="ml-3">
-                                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                            </div>
-                        </div>
-
-                        <div class="mt-3 space-y-1">
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-
-                                <x-responsive-nav-link :href="route('logout')"
-                                                       onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                                    {{ __('Log out') }}
-                                </x-responsive-nav-link>
-                            </form>
-                        </div>
-                    </div>
-                     @endif
-                </div>
             </nav>
 
             <!-- Page Content -->

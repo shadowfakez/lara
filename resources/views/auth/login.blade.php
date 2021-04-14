@@ -33,7 +33,7 @@
                 </div>
 
                 @if($errors->any())
-                    <div role="alert">
+                    <div role="alert" class="py-4">
                         <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
                             Ошибка!
                         </div>

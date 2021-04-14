@@ -17,6 +17,24 @@ Breadcrumbs::for('register', function ($trail) {
     $trail->push('Register', route('register'));
 });
 
+/*// Home > Admin
+Breadcrumbs::for('admin', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Admin', route('admin.home'));
+});*/
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 // Home > Blog > [Category]
 Breadcrumbs::for('category', function ($trail, $category) {
