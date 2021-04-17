@@ -15,6 +15,12 @@
                                     text-blue-500 border-b-2 font-medium border-blue-500" href="{{ route('users.index') }}">
                                         Users</a>
                                 </button>
+                                <button>
+                                    <a href="{{ route('users.create') }}" class="text-gray-600 py-4 px-6 block
+                        hover:text-blue-500
+                        focus:outline-none">
+                                        Create User</a>
+                                </button>
                             </nav>
                         </div>
                     </div>

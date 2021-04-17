@@ -24,6 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'verify_token',
+        'status',
     ];
 
     /**
@@ -51,6 +53,8 @@ class User extends Authenticatable
             'name' => $name,
             'email' => $email,
             'password' => bcrypt($password),
+            'verify_token' => Str::uuid(),
+            'status' => self::STATUS_WAIT,
         ]);
     }
 }

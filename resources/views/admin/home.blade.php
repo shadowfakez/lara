@@ -38,6 +38,12 @@
                         <a href="{{ route('users.index') }}" class="text-gray-600 py-4 px-6 block hover:text-blue-500 focus:outline-none">
                             Users</a>
                     </button>
+                    <button>
+                        <a href="{{ route('users.create') }}" class="text-gray-600 py-4 px-6 block
+                        hover:text-blue-500
+                        focus:outline-none">
+                            Create User</a>
+                    </button>
                                 </nav>
                             </div>
                         </div>
