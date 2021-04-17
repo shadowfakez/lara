@@ -16,15 +16,36 @@ Breadcrumbs::for('register', function ($trail) {
     $trail->parent('home');
     $trail->push('Register', route('register'));
 });
-
-/*// Home > Admin
+//==========================================================================================
+// Home > Admin
 Breadcrumbs::for('admin', function ($trail) {
     $trail->parent('home');
     $trail->push('Admin', route('admin.home'));
-});*/
+});
 
+// Home > Admin > Users
+Breadcrumbs::for('users', function ($trail) {
+    $trail->parent('admin');
+    $trail->push('Users', route('users.index'));
+});
 
+// Home > Admin > Users > Create
+Breadcrumbs::for('user_create', function ($trail) {
+    $trail->parent('users');
+    $trail->push('Create user', route('users.create'));
+});
 
+// Home > Admin > Users > Name
+Breadcrumbs::for('user_show', function ($trail, $user) {
+    $trail->parent('users');
+    $trail->push($user->name, route('users.show', $user->id));
+});
+
+// Home > Admin > Users > Edit > Name
+Breadcrumbs::for('user_edit', function ($trail, $user) {
+    $trail->parent('users', $user->name);
+    $trail->push('Edit '. $user->name, route('users.edit', $user->id));
+});
 
 
 

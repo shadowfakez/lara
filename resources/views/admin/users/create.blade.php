@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+    Create user
+@endsection
+
 @section('breadcrumbs')
+    {{ Breadcrumbs::render('user_create') }}
     {{--  <nav class="bg-grey-light rounded font-sans w-full">
           <div class="py-1.5">
               <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

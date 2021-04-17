@@ -1,19 +1,11 @@
 @extends('layouts.app')
 
+@section('title')
+{{ $user->name }}
+@endsection
+
 @section('breadcrumbs')
-    {{--  <nav class="bg-grey-light rounded font-sans w-full">
-          <div class="py-1.5">
-              <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                  <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                      <div class="p-2 bg-white border-b border-gray-200">
-                          <ol class="list-reset flex text-grey-dark">
-                              <li><a href="{{ route('home') }}">Home</a></li>
-                          </ol>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </nav>--}}
+    {{ Breadcrumbs::render('user_show', $user) }}
 @endsection
 
 @section('content')
